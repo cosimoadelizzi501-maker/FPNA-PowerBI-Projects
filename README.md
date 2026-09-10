@@ -1,17 +1,35 @@
-# FPNA-PowerBI-Projects
-End-to-end Enterprise FP&amp;A &amp; Corporate Controlling ecosystem: SQL relational architecture (ERP General Ledger), Activity-Based Costing, 3-Statement Financial Modeling, Working Capital &amp; What-If DAX simulations.
-# Enterprise FP&A & Corporate Controlling Architecture
+# Enterprise Sales Performance & Variance Analytics (Actual vs Budget)
 
 ## Executive Overview
-This project simulates the analytical and decision-making infrastructure of an enterprise FP&A department. Moving from raw relational ERP transactions (SQL General Ledger) to an executive Power BI reporting system, it provides the CFO with deep visibility across profitability, cash dynamics, and strategic scenario planning.
+This project provides an end-to-end sales performance and variance analysis framework designed for corporate finance and commercial controlling. Integrating a relational SQL database with an executive Power BI reporting model, it enables commercial leaders to track actual revenue against budget targets across product lines, evaluate pricing trends, and assess product-level contribution margins.
 
-## Core Tech Stack
-* **Database & Data Engineering:** SQL (DDL/DML schemas, Window Functions, CTEs, Indexed Views)
-* **Business Intelligence Engine:** Power BI, VertiPaq, Star Schema Modeling
-* **Financial Calculations:** Advanced DAX (Time Intelligence, Dynamic Statements, Disconnected What-If Parameters)
+---
 
-## Key Business Capabilities
-* **Full Financial Statement Integration:** Dynamic P&L (Gross Margin, Contribution Margin, EBITDA, EBIT) and Balance Sheet reconciliation.
-* **Indirect Cash Flow Modeling:** Automated bridge from Net Income to Free Cash Flow to Firm (FCFF) through Working Capital (DSO, DPO, DIO) tracking.
-* **Cost Allocation & ABC Modeling:** Multi-level indirect cost distribution across business units based on operational drivers.
-* **Scenario & Sensitivity Analysis:** Dynamic simulation sliders evaluating cost inflation (±10%) and demand shocks (±15%).
+## Tech Stack & Data Architecture
+* **Relational Database (SQL):** ANSI / SQLite schema design
+  * Dimensions: `Prodotti` (Product catalog, business lines, standard unit costs)
+  * Facts: `Vendite_Dettaglio` (Actual sales transactions, volume, unit prices, revenues, total costs)
+  * Budgets: `Budget_Vendite` (Monthly sales targets by product)
+  * Analytics Views: `vw_Vendite_Marginalita` (Relational joins and automated gross margin calculation)
+* **BI Engine & Modeling:** Power BI Desktop
+  * Normalized Star Schema design with 1:N relationships
+  * Dedicated Date/Time dimensions for temporal aggregation
+* **Calculations & DAX:**
+  * Actual vs Budget absolute variance: `[Ricavi Actual] - [Ricavi Budget]`
+  * Percentage variance and target achievement metrics
+  * Dynamic conditional formatting logic for variance alerts
+
+---
+
+## Key Business Insights Delivered
+* **Variance Analysis:** Instant identification of revenue gaps versus targets across Corporate and Retail lines.
+* **Margin Tracking:** Real-time visibility on product profitability and cost-to-revenue ratios.
+* **Executive Decision-Making:** Interactive slicers and visual alerts enabling quick root-cause diagnosis on underperforming product categories.
+
+---
+
+## Repository Structure
+* `Progetto_Enterprise_Sales_Dashboard.pbix`: Full interactive Power BI data model and executive dashboard.
+* `fpna_sales_model.sql`: Complete DDL/DML script with tables, seed datasets, and analytical view.
+* `Progetto_Enterprise_Sales_Dashboard.pdf`: Executive-ready reporting export.
+* 
